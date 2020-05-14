@@ -119,10 +119,13 @@ function handleDrag(event) {
 }
 
 function init() {
+    videoPlayer.addEventListener("loadmetadata", setTotalTime);
+    if (videoPlayer.readyState >= 1) {
+        setTotalTime();
+    }
     playBtn.addEventListener("click", handlePlayClick);
     volumeBtn.addEventListener("click", handleVolumeClick);
     fullScrnBtn.addEventListener("click", goFullScreen);
-    videoPlayer.addEventListener(setTotalTime());
     videoPlayer.addEventListener("ended", handleEnded);
     volumeRange.addEventListener("input", handleDrag);
 }
