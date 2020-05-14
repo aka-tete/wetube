@@ -47,5 +47,3 @@ app.use(routes.videos, videoRouter);
 app.use(routes.api, apiRouter);
 
 export default app;
-
-// 11.5 부터
