@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import flash from "express-flash";
 import routes from "../routes";
 import { home, search } from "../controllers/videoController";
 import { getJoin, getLogin, logout, postJoin, postLogin, githubLogin, postGithubLogIn, getMe, facebookLogin, postFacebookLogin } from "../controllers/userController";
@@ -19,7 +20,7 @@ globalRouter.get(routes.logout, onlyPrivate, logout);
 
 globalRouter.get(routes.gitHub, githubLogin);
 
-globalRouter.get(routes.githubCallback, passport.authenticate("github", { failureRedirect: "/login" }), postGithubLogIn);
+globalRouter.get(routes.githubCallback, passport.authenticate("github", { failureRedirect: "/login" }), postGithubLogIn, flash.successFlash);
 
 globalRouter.get(routes.me, getMe);
 
